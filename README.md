@@ -15,3 +15,5 @@ In ClustOmics folder, update the configuration file `config.yaml` using the conf
 Run the command:
 
 `snakemake out/HFpEF.HFpEF.FuseClusterings.10_supports.log`
+
+The file `consensusClustering.clst` from this repository store the consensus clustering obtained from running ClustOmics.
