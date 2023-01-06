@@ -26,22 +26,22 @@ reassign_unclassified: 'True'
 # For each Integration Edge, specify the datatypes to merge
   # RELATION_NAME: 'datatype1|datatype2|...|datatypeN'
 datatypes:
-  finalNCHFpEFidLip: 'NCBrut|NCPCA'
+  HFpEF: 'NCBrut|NCPCA'
   
 # For each Integration Edge, specify the methods to merge
 # RELATION_NAME: 'method1|method2|...|methodN'
 methods:
-  finalNCHFpEFidLip: 'HC2|HC3|HC4|HC5|PAM2|PAM3|PAM4|PAM5|kmeans2|kmeans3|kmeans4|kmeans5'
+  HFpEF: 'HC2|HC3|HC4|HC5|PAM2|PAM3|PAM4|PAM5|kmeans2|kmeans3|kmeans4|kmeans5'
   
 # For each Integration Edge, specify the minimum allowed size for clusters
 # Clusters containing less than x nodes will be removed from the analysis
 # Must be a positive integer
 min_size_clust:
-  finalNCHFpEFidLip: 10
+  HFpEF: 10
 
   
 # For each Integration Edge, specify the minimum number of objects to be returned
 # This parameters is only used when the number of supports to use to filter the graph is not specified
 min_size_consensus:
-  finalNCHFpEFidLip: 100
+  HFpEF: 100
 
