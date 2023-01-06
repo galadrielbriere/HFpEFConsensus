@@ -51,7 +51,7 @@ grid.arrange(p1, p2, p3, p4, p5, p6, ncol=2, top="PCA HFpEF Non-Cible data (scal
 #   cl = cutree(hclustBrut, k=k)
 #   print(table(cl))
 #   cl = data.frame("Patient"=names(cl), "Cluster"=unname(cl))
-#   write.table(cl, file=paste0(outdir, "/HFpEF_lipidesIdentifies_HClust", k, ".clst"), row.names = F, col.names = T, sep='\t', quote=F)
+#   write.table(cl, file=paste0(outdir, "/HFpEF_NCBrut_HClust", k, ".clst"), row.names = F, col.names = T, sep='\t', quote=F)
 # }
 
 # H-CLUST ON PCA DATA
@@ -68,7 +68,7 @@ for(k in 2:5){
   cl = cutree(hclustPCA, k=k)
   print(table(cl))
   cl = data.frame("Patient"=names(cl), "Cluster"=unname(cl))
-  write.table(cl, file=paste0(outdir, "/HFpEF_lipidesIdentifiesPCA_HClust", k, ".clst"), row.names = F, col.names = T, sep='\t', quote=F)
+  write.table(cl, file=paste0(outdir, "/HFpEF_NCPCA_HClust", k, ".clst"), row.names = F, col.names = T, sep='\t', quote=F)
 }
 
 
@@ -81,13 +81,13 @@ for(k in 2:5){
                      metric = "euclidean",
                      k = k)
 
-  outPam = paste(outdir, "/HFpEF_lipidesIdentifies_PAM", k, ".clst", sep="")
+  outPam = paste(outdir, "/HFpEF_NCBrut_PAM", k, ".clst", sep="")
   pamCl = data.frame("Patient"=names(pam_clusters$clustering), "Cluster"=pam_clusters$clustering)
   write.table(pamCl, file=outPam, sep="\t", col.names=T, row.names=F, quote=F)
   print(table(pamCl$Cluster))
 
   kmeans_clusters = kmeans(non_cible, k, nstart = 1000)
-  outKmeans = paste(outdir, "/HFpEF_lipidesIdentifies_Kmeans", k, ".clst", sep="")
+  outKmeans = paste(outdir, "/HFpEF_NCBrut_Kmeans", k, ".clst", sep="")
   kmeansCl = data.frame("Patient"=names(kmeans_clusters$cluster), "Cluster"=kmeans_clusters$cluster)
   write.table(kmeansCl, file=outKmeans, sep="\t", col.names=T, row.names=F, quote=F)
   print(table(kmeansCl$Cluster))
@@ -100,13 +100,13 @@ for(k in 2:5){
                      nstart = 1000,
                      metric = "euclidean",
                      k = k)
-  outPam = paste(outdir, "/HFpEF_lipidesIdentifiesPCA_PAM", k, ".clst", sep="")
+  outPam = paste(outdir, "/HFpEF_NCPCA_PAM", k, ".clst", sep="")
   pamCl = data.frame("Patient"=names(pam_clusters$clustering), "Cluster"=pam_clusters$clustering)
   write.table(pamCl, file=outPam, sep="\t", col.names=T, row.names=F, quote=F)
   print(table(pamCl$Cluster))
 
   kmeans_clusters = kmeans(res_pca$x[,c(1:cum80)], k, nstart = 1000)
-  outKmeans = paste(outdir, "/HFpEF_lipidesIdentifiesPCA_Kmeans", k, ".clst", sep="")
+  outKmeans = paste(outdir, "/HFpEF_NCPCA_Kmeans", k, ".clst", sep="")
   kmeansCl = data.frame("Patient"=names(kmeans_clusters$cluster), "Cluster"=kmeans_clusters$cluster)
   write.table(kmeansCl, file=outKmeans, sep="\t", col.names=T, row.names=F, quote=F)
   print(table(kmeansCl$Cluster))
