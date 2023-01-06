@@ -1,0 +1,47 @@
+# Connection to Neo4j database
+neo4j_id: 'neo4j' # default
+neo4j_password: '4jneo'
+database: "bolt://localhost:7687"
+# To find the appropriate database address: from Neo4j standalone,
+# start the database and via the "Manage" track, go to "Details",
+# then check the IP adress and Bolt port
+
+# Folder containing input clustering results
+clusterings_folder: "./data"
+
+# Specify the label to identify object nodes in the graph
+object_nodes_name: 'Patient'
+# Specify the label to identify cluster nodes in the graph
+cluster_nodes_name: 'Cluster'
+
+# If False return only objects that pass all filters (i.e, not reassigned patients)
+# If True, but reassign_unclassified set to False, small clusters won't be removed from the final clustering
+## and patients that never reach high enough number of supports will be outputed in a cluster labelled 'unclassified'
+write_all: 'True'
+
+# If set to True, ClustOmics will try to assign filtered out objects to consensus clusters
+# Ignored if write_all is set to False
+reassign_unclassified: 'True'
+
+# For each Integration Edge, specify the datatypes to merge
+  # RELATION_NAME: 'datatype1|datatype2|...|datatypeN'
+datatypes:
+  finalNCHFpEFidLip: 'NCBrut|NCPCA'
+  
+# For each Integration Edge, specify the methods to merge
+# RELATION_NAME: 'method1|method2|...|methodN'
+methods:
+  finalNCHFpEFidLip: 'HC2|HC3|HC4|HC5|PAM2|PAM3|PAM4|PAM5|kmeans2|kmeans3|kmeans4|kmeans5'
+  
+# For each Integration Edge, specify the minimum allowed size for clusters
+# Clusters containing less than x nodes will be removed from the analysis
+# Must be a positive integer
+min_size_clust:
+  finalNCHFpEFidLip: 10
+
+  
+# For each Integration Edge, specify the minimum number of objects to be returned
+# This parameters is only used when the number of supports to use to filter the graph is not specified
+min_size_consensus:
+  finalNCHFpEFidLip: 100
+
